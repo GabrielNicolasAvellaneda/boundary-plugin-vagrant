@@ -11,6 +11,10 @@ Example _Vagrantfile_ that creates a Ubuntu 14.04 LTS (Trusty Tah) 64-bit box wi
 
 ## Instructions
 
+### First time configuration
+
+1. Edit _bootstrap.sh_ and set your environment variables
+
 ### Startup
 
 1. Start the virtual machine
@@ -19,13 +23,17 @@ Example _Vagrantfile_ that creates a Ubuntu 14.04 LTS (Trusty Tah) 64-bit box wi
     $ vagrant up
     ```
 2. Wait until the virtual machines starts and completes provisioning
+
 3. To login onto the host:
 
     ```bash
     $ vagrant ssh
     ```
+
 ### Halt
-1. To halt the virtual machine, logoff and run this command
+
+1. To halt the virtual machine, logoff and run:
+
     ```bash
     $ vagrant halt
     ```
