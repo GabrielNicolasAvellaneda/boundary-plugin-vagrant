@@ -1,11 +1,13 @@
-boundary-vagrant
-================
+boundary-plugins-vagrant
+========================
 
-Example _Vagrantfile_ that creates a Ubuntu 14.04 LTS virtual machine with various services for testing plugins.
+Example _Vagrantfile_ that creates a Ubuntu 14.04 LTS (Trusty Tah) 64-bit box with various services for testing plugins.
 
 ## Requirements
 - Vagrant (http://www.vagrantup.com/downloads.html)
 - Virtualbox (https://www.virtualbox.org/wiki/Downloads)
+- 2 Gb of RAM
+- 2 Cores
 
 ## Instructions
 
@@ -36,3 +38,9 @@ Completely destroys the VM and its state, but it also frees up all the disk usag
     ```
     $ vagrant destroy
     ```
+
+## Services running
+
+
+
+
