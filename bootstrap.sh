@@ -1,12 +1,14 @@
 #!/usr/bin/env bash 
+# This script accepts a parameter with the application/service to install/configure. for example ./bootstrap.sh git. If no parameter is specified it will install/configure all the applications/services.
 
 GIT_USER_NAME="Your Git Username"
 GIT_USER_EMAIL="your@email.com"
 GIT_CORE_EDITOR=vim
 
-BOUNDARY_API_TOKEN="api.4a188c9650-6506"
+BOUNDARY_API_TOKEN="api.xxxxxxxxxx-xxxx"
 
 # Basic system configuration
+sudo apt-get update
 
 if [[ $# -eq 0 || $1 = 'git' ]]
 then
@@ -31,16 +33,31 @@ fi
 # Luachech installation 
 if [[ $# -eq 0 || $1 = "luacheck" ]]
 then
-  sudo apt-get update
   sudo apt-get install -y luarocks
   sudo luarocks install luacheck
 fi
 
 # HAProxy
 # TODO: Install latest verions of HAProxy for v1.3.x, v1.4.x, v1.5.x, v1.6.x
+if [[ $# -eq 0 || $1 = "haproxy" ]]
+then
+  sudo apt-get install -y haproxy
+  sudo apt-get install -y libpcre3-dev
+
+  mkdir -p /vagrant/haproxy
+  cd /vagrant/haproxy
+  wget http://www.haproxy.org/download/1.3/src/haproxy-1.3.27.tar.gz
+  if [[ -f /vagrant/haproxy-1.3.27.tar.gz ]]
+  then
+    tar -zvzf haproxy-1.3.27.tar.gz
+    cd haproxy-1.3.27
+    make TARGET=linux26 USE_PCRE=1
+# TODO: Create an script to run the haproxy ./haproxy -f /etc/haproxy/haproxy.cfg 
+  fi
+  cd /vagrant
+fi
 
 # TODO: Install Apache 2.2
-
 
 # Zookeeper
 
@@ -55,4 +72,3 @@ fi
 # TODO: Install Nginx
 
 # TODO: Install Varnish Cache
-
