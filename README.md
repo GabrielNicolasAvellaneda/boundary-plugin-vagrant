@@ -47,8 +47,11 @@ Completely destroys the VM and its state, but it also frees up all the disk usag
     $ vagrant destroy
     ```
 
-## Services running
+## Services running and port forwarded
 
+Please check in your host if you have the following ports free
 
-
+| Service Name | Guest Port | Host Port |
+|--------------|------------|-----------|
+| couchbase    | 8091       | 8091      |
 

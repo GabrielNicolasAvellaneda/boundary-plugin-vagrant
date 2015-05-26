@@ -1,5 +1,17 @@
 #!/usr/bin/env bash 
+
 # This script accepts a parameter with the application/service to install/configure. for example ./bootstrap.sh git. If no parameter is specified it will install/configure all the applications/services.
+
+# TODO:
+# 	Interactive mode, ask for variables like GIT_USER_NAME, GIT_USER_EMAIL, GIT_CORE_EDITOR and show default values.
+
+# Services and applications list:
+# git
+# boundary-meter 
+# haproxy
+# 	versions: 
+# luacheck
+# couchbase
 
 GIT_USER_NAME="Your Git Username"
 GIT_USER_EMAIL="your@email.com"
@@ -19,7 +31,7 @@ then
 fi
 
 # Boundary meter installation
-if [[ $# -eq 0 || $1 = "boundary" ]]
+if [[ $# -eq 0 || $1 = "boundary-meter" ]]
 then
   curl -fsS \
     -d "{\"token\":\"$BOUNDARY_API_TOKEN\"}" \
@@ -30,7 +42,13 @@ then
   rm setup_meter.sh
 fi
 
-# Luachech installation 
+# Clone repositories into working directory
+mkdir -p /vagrant/boundary
+cd /vagrant/boundary
+
+git clone https://github.com/GabrielNicolasAvellaneda/boundary-plugin-couchbase
+
+# Luacheck installation 
 if [[ $# -eq 0 || $1 = "luacheck" ]]
 then
   sudo apt-get install -y luarocks
@@ -72,3 +90,12 @@ fi
 # TODO: Install Nginx
 
 # TODO: Install Varnish Cache
+
+# Install couchbase
+if [[ $# -eq 0 || $1 = "couchbase" ]]
+then
+	cd /vagrant/installers
+	wget http://packages.couchbase.com/releases/3.0.3/couchbase-server-enterprise_3.0.3-ubuntu12.04_amd64.deb
+	sudo dpkg -i couchbase-server-enterprise_3.0.3-ubuntu12.04_amd64.deb
+fi
+
