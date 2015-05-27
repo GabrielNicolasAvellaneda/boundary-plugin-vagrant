@@ -79,6 +79,13 @@ then
   cd /vagrant
 fi
 
+# ActiveMQ installation and configuration
+if [[ $# -eq 0 || $1 = "activemq" ]]
+then
+  cd /vagrant/installers
+  wget http://mirror.nbtelecom.com.br/apache/activemq/5.11.1/apache-activemq-5.11.1-bin.tar.gz
+fi
+
 # TODO: Install Apache 2.2
 
 # Zookeeper
