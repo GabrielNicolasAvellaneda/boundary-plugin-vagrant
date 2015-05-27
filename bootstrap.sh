@@ -86,7 +86,8 @@ then
   wget http://mirror.nbtelecom.com.br/apache/activemq/5.11.1/apache-activemq-5.11.1-bin.tar.gz
 fi
 
-# TODO: Install Apache 2.2
+# Install Apache 2.2
+sudo apt-get install -y apache2
 
 # Zookeeper
 
