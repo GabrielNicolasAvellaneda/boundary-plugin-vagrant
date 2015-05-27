@@ -54,4 +54,3 @@ Please check in your host if you have the following ports free
 | Service Name | Guest Port | Host Port |
 |--------------|------------|-----------|
 | couchbase    | 8091       | 8091      |
-

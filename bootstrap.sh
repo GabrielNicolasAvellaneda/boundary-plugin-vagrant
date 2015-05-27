@@ -22,6 +22,9 @@ BOUNDARY_API_TOKEN="api.xxxxxxxxxx-xxxx"
 # Basic system configuration
 sudo apt-get update
 
+# JDK installation
+sudo apt-get install -y default-jdk
+
 if [[ $# -eq 0 || $1 = 'git' ]]
 then
   sudo apt-get install -y git
@@ -47,6 +50,7 @@ mkdir -p /vagrant/boundary
 cd /vagrant/boundary
 
 git clone https://github.com/GabrielNicolasAvellaneda/boundary-plugin-couchbase
+git clone https://github.com/GabrielNicolasAvellaneda/boundary-plugin-framework-lua
 
 # Luacheck installation 
 if [[ $# -eq 0 || $1 = "luacheck" ]]
